@@ -41,9 +41,9 @@
     <div v-if="account?.id == profile?.id" class="row">
 
         
-    <div class="card-body">
+    <div class="card-body" style="margin-left: 15px;">
 
-      <div class="post-card mx-1 my-3 elevation-5" style="height: 7.5rem;">
+      <div class="post-card mx-1 my-3 elevation-5" style="height: 8.5rem;">
         <form @submit.prevent="addPost()">
 
           <div class="col-12">
