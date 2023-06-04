@@ -2,7 +2,7 @@
   <div v-if="account?.id" class="row">
     <div class="card-body" style="margin-left: 15px;">
 
-      <div class="post-card mx-1 my-3 elevation-5">
+      <div class="post-card mx-1 mt-3 elevation-5" style="height: 8.5rem;">
         <form @submit.prevent="addPost()">
 
           <div class="col-12">

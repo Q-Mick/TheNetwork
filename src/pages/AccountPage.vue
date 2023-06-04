@@ -2,7 +2,7 @@
   <div class="row">
     <div class="card-body mx-1">
 
-      <div class="post-card elevation-5 mt-1" v-if="account">
+      <div class="post-card elevation-5 mt-3" v-if="account">
         <div class="row">
           <div class="col-12">
             <div class="banner-container">
@@ -47,22 +47,30 @@
               <input name="name" class="input-text form-control" placeholder="Name" type="text" required v-model="editable.name">
             </div>
 
+            
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Class of:</span>
+              <input name="cover-img" class="input-text form-control" placeholder="Graduated class. eg, late spring 2023" type="url" v-model="editable.class">
+            </div>
+
             <div class="input-group mb-3">
               <span class="input-group-text">Bio:</span>
               <textarea v-model="editable.bio" class="text-area form-control" aria-label="With textarea"></textarea>
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Img Url:</span>
+              <span class="input-group-text" id="basic-addon1">Profile Pic:</span>
               <input name="picture" class="input-text form-control" placeholder="Profile Picture" type="url" required
                 v-model="editable.picture">
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Cover Img:</span>
+              <span class="input-group-text" id="basic-addon1">Profile Banner:</span>
               <input name="cover-img" class="input-text form-control" placeholder="Cover image" type="url" required
                 v-model="editable.coverImg">
             </div>
+
+
 
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">GitHub:</span>
@@ -80,10 +88,12 @@
               <input name="cover-img" class="input-text form-control" placeholder="Resume URL" type="url"
                 v-model="editable.resume">
             </div>
+            <div>
 
-          </div>
-          <div class="text-end">
-            <button class="edit-btn m-2 fs-5" type="submit">Save Account</button>
+            </div>
+            <div class="text-end">
+              <button class="edit-btn m-2 fs-5" type="submit">Save Account</button>
+            </div>
           </div>
         </form>
       </div>

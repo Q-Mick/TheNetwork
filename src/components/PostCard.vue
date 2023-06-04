@@ -110,8 +110,8 @@ p{
 .banner-container {
     position: relative;
     width: 100%;
-    height: 100%rem;
-    /* Adjust the height as needed */
+    height: 100%;
+    /* Adjust the height as needed,*/
     overflow: hidden;
     // overflow-y: scroll;
     // max-height: 50vh
@@ -119,7 +119,7 @@ p{
 
 .banner-container img {
     width: 100%;
-    max-height: 60rem;
+    max-height: 35rem;
     object-fit: cover;
     object-position: center;
 
