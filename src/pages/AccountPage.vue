@@ -2,7 +2,7 @@
   <div class="row">
     <div class="card-body mx-1">
 
-      <div class="post-card elevation-5" v-if="account">
+      <div class="post-card elevation-5 mt-1" v-if="account">
         <div class="row">
           <div class="col-12">
             <div class="banner-container">

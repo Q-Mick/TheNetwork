@@ -1,6 +1,6 @@
 <template>
   <div v-if="account?.id" class="row">
-    <div class="card-body">
+    <div class="card-body" style="margin-left: 15px;">
 
       <div class="post-card mx-1 my-3 elevation-5">
         <form @submit.prevent="addPost()">

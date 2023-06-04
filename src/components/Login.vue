@@ -6,8 +6,8 @@
     </button>
     <div v-else>
       <div class="dropdown my-2 my-lg-0">
-        <div type="button" class="bg-dark border-0 selectable no-select" data-bs-toggle="dropdown" aria-expanded="false">
-          <div v-if="account.picture || user.picture">
+        <div type="button" class=" border-0 selectable no-select" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="avatar-container" v-if="account.picture || user.picture">
             <img :src="account.picture || user.picture" alt="account photo" height="40" class="rounded" />
           </div>
         </div>
@@ -50,5 +50,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.avatar-container {
+    width: 58px;
+    position: relative;
+    height: 58px;
+    border-radius: 90;
+    overflow: hidden;
+    // border: 2px solid #000;
+    background-color: transparent;
+    
 
+
+}
+
+.avatar-container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 </style>

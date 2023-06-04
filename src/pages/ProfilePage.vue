@@ -1,8 +1,8 @@
 <template>
     <!-- TODO for conditional rendering of edit acct button -->
     <!-- check to see if the id from the route matches the id of the account logged in -->
-    <div class="row">
-        <div class="card-body mx-1">
+    <div class="row" style="margin-left: -1px;">
+        <div class="mt-1 ml-1 card-body mx-1" style="margin-left: 15px;">
 
             <div class="post-card elevation-5" v-if="profile">
                 <div class="row">

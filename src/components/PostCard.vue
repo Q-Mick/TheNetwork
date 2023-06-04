@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="card-body">
+        <div class="card-body" style="margin-left: 15px;">
             <div class="post-card mx-1 my-3 elevation-5">
 
                 <div class="d-flex justify-content-between">
@@ -112,13 +112,17 @@ export default {
     height: 100%rem;
     /* Adjust the height as needed */
     overflow: hidden;
+    overflow-y: scroll;
+    max-height: 40vh
 }
 
 .banner-container img {
     width: 100%;
-    height: 100%;
+    max-height: 40rem;
     object-fit: cover;
     object-position: center;
+
+    
 
 }
 
