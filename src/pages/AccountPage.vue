@@ -25,7 +25,7 @@
             <p class="mb-1 mx-1 p-1">{{ account.bio }}</p>
           </div>
           <div class="text-end">
-            <button disabled class="edit-btn fs-5">Editing account</button>
+            <button disabled class="edit-btn fs-6">Editing account</button>
           </div>
 
         </div>
@@ -92,7 +92,7 @@
 
             </div>
             <div class="text-end">
-              <button class="edit-btn m-2 fs-5" type="submit">Save Account</button>
+              <button class="edit-btn m-2 fs-6" type="submit">Save Account</button>
             </div>
           </div>
         </form>
