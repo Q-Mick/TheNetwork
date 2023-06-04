@@ -112,8 +112,8 @@ export default {
     height: 100%rem;
     /* Adjust the height as needed */
     overflow: hidden;
-    overflow-y: scroll;
-    max-height: 40vh
+    // overflow-y: scroll;
+    max-height: 50vh
 }
 
 .banner-container img {
