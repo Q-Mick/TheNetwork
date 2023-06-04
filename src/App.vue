@@ -48,6 +48,9 @@ export default {
 :root {
   --main-height: calc(100vh - 32px - 64px);
 }
+main{
+  background-color: rgb(200, 243, 234);
+}
 :header {
   --bg-grad: radial-gradient(circle, rgba(46,151,191,1) 15%, rgba(97,202,238,1) 37%, rgba(37,223,196,1) 73%);
   --blur: 10px;

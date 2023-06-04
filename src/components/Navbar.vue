@@ -8,12 +8,12 @@
     </router-link>
     
       <div class="row">
-        <div class="col-6 d-flex pt-1">
-          <label for="" style="position: relative;">Posts</label>
+        <div class="col d-flex pt-1">
+          <p class="m-0" >Search Posts</p>
           <form @submit.prevent="searchPosts()">
-            <input class="offset-1" v-model="search" placeholder="Search..." type="text" >
+            <input class="mx-1" v-model="search" placeholder="Search..." type="text" >
           </form>
-          <p @click="resetPosts()" v-if="searching" class="text-danger mdi mdi-close offset" style="position: absolute; top: 20px;left: 26em;"><span class="text-black">Go Back</span></p>
+          <p @click="resetPosts()" v-if="searching" class="text-danger mdi mdi-close offset" ><span class="text-black">Go Back</span></p>
         </div>
         
       </div>

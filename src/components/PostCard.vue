@@ -113,12 +113,12 @@ export default {
     /* Adjust the height as needed */
     overflow: hidden;
     // overflow-y: scroll;
-    max-height: 50vh
+    // max-height: 50vh
 }
 
 .banner-container img {
     width: 100%;
-    max-height: 40rem;
+    max-height: 60rem;
     object-fit: cover;
     object-position: center;
 
