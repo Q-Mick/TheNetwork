@@ -35,8 +35,8 @@
   <div v-for="(p) in posts" :key="p.id">
     <PostCard :postProp="p" />
   </div>
-  <button :disabled="!previousUrl" @click="changePage(previousUrl)" class="edit-btn m-2 fs-5">Previous</button>
-  <button :disabled="!nextUrl" @click="changePage(nextUrl)" class="edit-btn m-2 fs-5">Next</button>
+  <button  :disabled="!previousUrl" @click="changePage(previousUrl)" class="edit-btn m-2 fs-5">Previous</button>
+  <button  :disabled="!nextUrl" @click="changePage(nextUrl)" class="edit-btn m-2 fs-5">Next</button>
 </template>
 
 <script>
