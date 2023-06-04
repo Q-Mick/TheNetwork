@@ -1,6 +1,10 @@
 <template>
-   <h3>{{ profileProp.name }}</h3>
-   <img :src="profileProp.picture" alt="">
+    <div class="profile-card">
+
+        <h3>{{ profileProp.name }}</h3>
+        
+        <img class="img-fluid" :src="profileProp.picture" alt="">
+    </div>
 </template>
 
 
@@ -26,16 +30,7 @@ export default {
 
 
 <style lang="scss" scoped>
-.profile-card {
-    background-image: v-bind(coverImg);
-    aspect-ratio: 1/1;
-    height: 150px;
-    min-width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: grid;
-    place-content: center;
-}
+
 .profile-picture {
   height: 100px;
   aspect-ratio: 1/1;

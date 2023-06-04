@@ -1,14 +1,25 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="bg-color navbar navbar-expand-lg  px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
-        <form @submit.prevent="searchPosts()">
-          <label class="mx-1" for="search">Search</label>
-          <input v-model="search" placeholder="Search..." type="text">
-        </form>
+        <img alt="logo" src="https://cdn.icon-icons.com/icons2/3237/PNG/512/connection_social_media_communication_user_network_friends_icon_197427.png" height="45" />
+        <p class="m-0" >Code Social</p>
       </div>
     </router-link>
+    <div class="container">
+      <div class="row">
+        <div class="col-6 d-flex pt-1">
+          <label for="" style="position: relative;">Posts</label>
+          <form @submit.prevent="searchPosts()">
+            <input class="offset-1" v-model="search" placeholder="Search..." type="text" >
+          </form>
+          <i @click="resetPosts()" v-if="searching" class="text-danger mdi mdi-close offset" style="position: absolute; top: 20px;left: 30em;"><span class="text-black">Cancel Search</span></i>
+        </div>
+        
+      </div>
+
+    </div>
+   
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -29,27 +40,43 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed, popScopeId } from "vue";
 import { postsService } from "../services/PostsService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 import Login from './Login.vue';
+import { AppState } from "../AppState.js";
 export default {
   setup() {
     const search = ref('')
+    const search1 = ref('')
     return {
       search,
-
+      search1,
+      async resetPosts(){
+        try {
+          await postsService.getPosts()
+          AppState.searching = false
+        } catch (error) {
+          Pop.error(error)
+        }
+      },
       async searchPosts(){
         try {
-          const searchTerm = search.value
-          logger.log('Searching Posts', searchTerm)
-          await postsService.searchPosts(searchTerm)
+          const trimmedSearch = search.value.trim();
+          if (trimmedSearch.length == 0) {
+            Pop.toast("Please enter a term to search for")
+            return
+          }
+          AppState.searching = true
+          logger.log('Searching Posts', trimmedSearch)
+          await postsService.searchPosts(trimmedSearch)
           search.value = ""
         } catch (error) {
           Pop.error(error)
         }
-      }
+      },
+      searching: computed(() => AppState.searching),
     }
   },
   components: { Login }
@@ -76,4 +103,10 @@ a:hover {
     height: 64px;
   }
 }
+.bg-color{
+  background-color: #0093E9;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
+}
+
 </style>

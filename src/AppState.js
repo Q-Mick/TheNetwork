@@ -11,8 +11,12 @@ export const AppState = reactive({
   activePost: null,
   previousPage: null,
   nextPage: null,
-  
-
+  searching: null,
+  verts: [{
+    linkURL: '',
+    tall: '',
+  }
+  ],
   /** @type {import('./models/Profile.js').Profile | null} */
   activeProfile: null,
 });
