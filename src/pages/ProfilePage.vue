@@ -2,7 +2,7 @@
     <!-- TODO for conditional rendering of edit acct button -->
     <!-- check to see if the id from the route matches the id of the account logged in -->
     <div class="row" style="margin-left: -1px;">
-        <div class="mt-1 ml-1 card-body mx-1" style="margin-left: 15px;">
+        <div class="mt-3 ml-1 card-body mx-1" style="margin-left: 15px;">
 
             <div class="post-card elevation-5" v-if="profile">
                 <div class="row">
@@ -76,8 +76,8 @@
     <div v-for="(p) in posts" :key="p?.id">
         <PostCard :postProp="p" />
     </div>
-    <button :disabled="!previousUrl" @click="changePage(previousUrl)" class="m-1">Previous</button>
-    <button :disabled="!nextUrl" @click="changePage(nextUrl)" class="m-1">Next</button>
+    <button :disabled="!previousUrl" @click="changePage(previousUrl)" class="edit-btn m-2 fs-5">Previous</button>
+    <button :disabled="!nextUrl" @click="changePage(nextUrl)" class="edit-btn m-1 fs-5">Next</button>
 </template>
 
 
@@ -225,7 +225,7 @@ export default {
 .edit-btn {
     background-color: #fff;
     border: 2px solid #6ac6f5;
-    color: #6ac6f5;
+    color: #000000;
     padding: 1px 15px;
     border-radius: 4px;
     font-size: 16px;
@@ -235,16 +235,9 @@ export default {
 
 .edit-btn:hover {
     background-color: #6ac6f5;
-    color: #fff;
+    color: #000000;
 }
 
-.post-card {
-    background-color: #ffffff;
-    // margin: 0.25rem;
-    border-radius: 0.25rem;
-    //   padding: 0.5rem;
-    // transition: transform 0.3s ease;
-}
 
 .text-area {
     border: 1px solid #999;

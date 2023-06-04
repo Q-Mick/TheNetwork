@@ -35,8 +35,8 @@
   <div v-for="(p) in posts" :key="p.id">
     <PostCard :postProp="p" />
   </div>
-  <button :disabled="!previousUrl" @click="changePage(previousUrl)" class="m-1">Previous</button>
-  <button :disabled="!nextUrl" @click="changePage(nextUrl)" class="m-1">Next</button>
+  <button :disabled="!previousUrl" @click="changePage(previousUrl)" class="edit-btn m-2 fs-5">Previous</button>
+  <button :disabled="!nextUrl" @click="changePage(nextUrl)" class="edit-btn m-2 fs-5">Next</button>
 </template>
 
 <script>
@@ -58,7 +58,7 @@ export default {
 
 
     onMounted(() => getPosts())
-    onMounted(()=> getVerts())
+    onMounted(() => getVerts())
     async function getPosts() {
       try {
         await postsService.getPosts()
@@ -111,65 +111,60 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
 
-  .home-card {
-    width: 50vw;
-
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
-
-  .post-author {
-    height: 60px;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  }
+  input::placeholder {
+  font-size: 20px;
+  color: #999;
+}
+.text-area {
+  background-color: #121218;
+  border: 1px solid #999;
+  outline: none;
+  padding: 5px;
+  height: 5rem;
+  width: 90%;
+  font-size: 20px;
+  color: white;
+}
+.text-area:focus {
+  border-bottom-color: #555;
+  border: none;
+  outline: 1px solid black;
 }
 
-.profile-container {
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  // height: 8rem;
-  // padding: 20px;
-  //   transition: transform 0.3s ease;
+.input-text {
+  border: 1px solid #999;
+  outline: none;
+  padding: 5px;
+  background-color: #121218;
+  color: white;
+  // width: 60%;
+  font-size: 20px;
+}
+
+.input-text:focus {
+  border-bottom-color: #555;
+  border: none;
+  outline: 1px solid black;
 }
 
 .edit-btn {
-  background-color: #fff;
-  border: 2px solid #6ac6f5;
-  color: #6ac6f5;
-  padding: 1px 15px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
+    background-color: #fff;
+    border: 2px solid #6ac6f5;
+    color: #000000;
+    padding: 1px 15px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
 
 }
 
 .edit-btn:hover {
-  background-color: #6ac6f5;
-  color: #fff;
+    background-color: #6ac6f5;
+    color: #000000;
 }
 
-.text-area {
-  border: 1px solid #999;
-  outline: none;
-  padding: 5px;
-  width: 85%;
-  font-size: 14px;
-}
+
 
 .banner-container {
   position: relative;
@@ -217,11 +212,4 @@ export default {
   border-bottom-color: #555;
 }
 
-.post-card {
-  background-color: #ffffff;
-  // margin: 0.25rem;
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-  // transition: transform 0.3s ease;
-}
 </style>

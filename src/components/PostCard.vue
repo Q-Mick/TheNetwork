@@ -2,34 +2,37 @@
     <div class="row">
         <div class="card-body" style="margin-left: 15px;">
             <div class="post-card mx-1 my-3 elevation-5">
-
-                <div class="d-flex justify-content-between">
-                    <h3>{{ postProp?.creator?.name }}</h3>
-                    <p>Posted at: {{ postProp?.createdAt }}</p>
-                </div>
-                <router-link :to="{ name: 'Profile', params: { id: postProp.creator.id } }">
-                    <div class="avatar-container">
-                        <img class=""  :src="postProp.creator.picture" alt="">
+                
+                <div class="col-6">
+                    <div class="avatar-container d-flex justify-content-between">
+                        <router-link :to="{ name: 'Profile', params: { id: postProp.creator.id } }">
+                            <img class=""  :src="postProp.creator.picture" alt="">
+                        </router-link>
                     </div>
-                </router-link>
+                    
+                </div>
+                <div class="">
+                    <h3>{{ postProp?.creator?.name }}</h3>
+                </div>
                 <p>{{ postProp.body }}</p>
                 <div v-if="postProp.imgUrl != ''" class="banner-container">
                     <img :src="postProp.imgUrl" alt="">
                 </div>
                 <div class="row">
-                    <div class="col-12 ">
+                    <div class="col-12 text-end">
+                        <p class="m-0">Posted at: {{ postProp?.createdAt }}</p>
 
                         <div v-if="account?.id" class="d-flex justify-content-between">
 
-                            <p @click="toggleLike(postProp.id)" class="m-0 pt-2" style="cursor: pointer;">❤️{{
-                                postProp.likes.length }}</p>
+                            <p @click="toggleLike(postProp.id)" class="fs-3 m-0 pt-2" style="cursor: pointer;">❤️{{
+                                postProp.likes.length }} Like</p>
 
                             <button @click="deletePost(postProp?.id)" v-if="postProp?.creator.id == account?.id"
                                 class="edit-btn mt-1" style="cursor: pointer;" title="Delete Post"><span
                                     class="mdi mdi-delete"></span>Delete Post</button>
                         </div>
                         <div v-else="">
-                            <span class="m-0" style="cursor: pointer;">❤️ {{ postProp.likes.length }}</span>
+                            <span class="m-0" style="cursor: pointer;">❤️ {{ postProp.likes.length }} Like</span>
                         </div>
                     </div>
                 </div>
@@ -85,17 +88,15 @@ export default {
 
 
 <style lang="scss" scoped>
-.post-author {
-    border: double;
-    color: black;
-    height: 60px;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+p{
+    color:gray
 }
 
 .post-card {
-    background-color: #ffffff;
+    color: white;
+    background: linear-gradient(1turn,#121218,rgba(18,18,24,0));
+    // outline: solid linear-gradient(210deg,rgba(0,255,85,.6),#70f7ff 10%,#76b6fe 60%,#000 80%);
+    box-shadow: 0 0 0 2px rgba(0, 255, 85, .6), 0 0 0 4px #70f7ff, 0 0 0 6px #76b6fe, 0 0 0 8px #000;
     // margin: 0.25rem;
     border-radius: 0.25rem;
     padding: 0.5rem;
@@ -127,20 +128,21 @@ export default {
 }
 
 .edit-btn {
-    background-color: #fff;
-    border: 2px solid #6ac6f5;
-    color: #6ac6f5;
-    padding: 1px 15px;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, .5);
+  background: linear-gradient(90deg, #70f7ff, #76b6fe); 
+  border: 2px solid #6ac6f5;
+  color: black;
+  padding: 1px 15px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
 }
 
 .edit-btn:hover {
-    border: 2px solid #f56a6a;
-    background-color: #f56a6a;
-    color: #000000;
+  background-color: #6ac6f5;
+  color: #000000;
+  box-shadow: inset 0 3px 5px rgba(127, 243, 160, 0.5);
 }
 .avatar-container {
     width: 100px;

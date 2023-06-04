@@ -25,7 +25,7 @@
             <p class="mb-1 mx-1 p-1">{{ account.bio }}</p>
           </div>
           <div class="text-end">
-            <button disabled class="m-1 edit-btn2">Editing account</button>
+            <button disabled class="edit-btn fs-5">Editing account</button>
           </div>
 
         </div>
@@ -37,7 +37,7 @@
     <div class="card-body">
 
 
-      <div class="post-card elevation-5 mt-2 m-1 p-1">
+      <div class="post-card elevation-5 mt-3 m-1 p-1">
 
         <form class="" @submit.prevent="handleSubmit">
           <div v-if="account.id" class="card-body">
@@ -95,19 +95,25 @@
 </template>
 
 <script>
-import { ref, watchEffect, computed } from 'vue';
+import { ref, watchEffect, computed, onMounted } from 'vue';
 import { AppState } from '../AppState.js';
 import { accountService } from '../services/AccountService.js';
 import Pop from '../utils/Pop.js';
-
+import { postsService } from "../services/PostsService.js";
 export default {
   setup() {
     const editable = ref({})
-
+    onMounted(() => getVerts())
     watchEffect(() => {
       editable.value = { ...AppState.account }
     })
-
+    async function getVerts(){
+        try {
+          await postsService.getVerts()
+        } catch (error) {
+          Pop.error(error)
+        }
+      }
 
     return {
       account: computed(() => AppState.account),
@@ -136,10 +142,79 @@ if (url) {
 
 
 <style lang="scss" scoped>
+
+span{
+  color: rgb(235, 235, 235);
+  background-color: #121218;
+}
+
+input::placeholder {
+  font-size: 20px;
+  color: #999;
+}
+.text-area {
+  background-color: #121218;
+  border: 1px solid #999;
+  outline: none;
+  padding: 5px;
+  height: 5rem;
+  width: 80%;
+  font-size: 20px;
+  color: #999;
+}
+.text-area:focus {
+  border-bottom-color: #555;
+  border: none;
+  outline: 1px solid black;
+}
+
+.input-text {
+  border: 1px solid #999;
+  outline: none;
+  padding: 5px;
+  background-color: #121218;
+  color: #999;
+  // width: 60%;
+  font-size: 20px;
+}
+
+.input-text:focus {
+  border-bottom-color: #555;
+  border: none;
+  outline: 1px solid black;
+}
+.edit-btn {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, .5);
+  background: linear-gradient(90deg, #70f7ff, #76b6fe); 
+  border: 2px solid #6ac6f5;
+  color: black;
+  padding: 1px 15px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.edit-btn:hover {
+  background-color: #6ac6f5;
+  color: #000000;
+  box-shadow: inset 0 3px 5px rgba(127, 243, 160, 0.5);
+}
+
+.post-card {
+    color: white;
+    background: linear-gradient(1turn,#121218,rgba(18,18,24,0));
+    // outline: solid linear-gradient(210deg,rgba(0,255,85,.6),#70f7ff 10%,#76b6fe 60%,#000 80%);
+    box-shadow: 0 0 0 2px rgba(0, 255, 85, .6), 0 0 0 4px #70f7ff, 0 0 0 6px #76b6fe, 0 0 0 8px #000;
+    // margin: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
 .banner-container {
   position: relative;
   width: 100%;
-  height: 10rem;
+  height: 20rem;
   /* Adjust the height as needed */
   overflow: hidden;
 }
@@ -162,7 +237,6 @@ if (url) {
 
 
 }
-
 .avatar-container img {
   position: absolute;
   width: 100%;
@@ -170,76 +244,7 @@ if (url) {
   object-fit: cover;
 }
 
-.profile-container {
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  //   padding: 20px;
-  //   transition: transform 0.3s ease;
-}
 
-// .profile-container:hover {
-//   transform: translateY(-4px);
-// }
-.edit-btn2 {
-  background-color: #fff;
-  border: 2px solid #6ac6f5;
-  color: #6ac6f5;
-  padding: 1px 15px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
 
-}
-.edit-btn {
-  background-color: #fff;
-  border: 2px solid #6ac6f5;
-  color: #6ac6f5;
-  padding: 1px 15px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
 
-}
-
-.edit-btn:hover {
-  background-color: #6ac6f5;
-  color: #fff;
-}
-
-.post-card {
-  background-color: #ffffff;
-  // margin: 0.25rem;
-  border-radius: 0.25rem;
-  //   padding: 0.5rem;
-  // transition: transform 0.3s ease;
-}
-
-.text-area {
-  border: 1px solid #999;
-  outline: none;
-  padding: 5px;
-  height: 5rem;
-  width: 80%;
-  font-size: 14px;
-}
-.text-area:focus {
-  border-bottom-color: #555;
-  border: none;
-  outline: 1px solid black;
-}
-
-.input-text {
-  border: 1px solid #999;
-  outline: none;
-  padding: 5px;
-  // width: 60%;
-  font-size: 14px;
-}
-
-.input-text:focus {
-  border-bottom-color: #555;
-  border: none;
-  outline: 1px solid black;
-}
 </style>

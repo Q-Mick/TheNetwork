@@ -1,10 +1,10 @@
 <template>
-    <div v-if="account?.id" class="mt-1 card-body d-flex bg-white flex-column p-1 elevation-5 rounded">
+    <div v-if="account?.id" class="post-card mt-3 card-body d-flex flex-column p-1 elevation-5 rounded">
 
         <div class="avatar-container">
             <img class="" :src="account.picture" alt="">
         </div>
-        <p class="fw-bold m-0">{{ account.name }}</p>
+        <h5 class="fw-bold m-0">{{ account.name }}</h5>
         <p v-if="account.graduated" class="m-0">{{ account.class }}</p>
         <p class="m-0">{{ account.bio }}</p>
         <div class="text-end">
@@ -30,6 +30,9 @@ export default {
 
 
 <style lang="scss" scoped>
+p{
+    color:gray
+}
 .banner-container {
     position: relative;
     width: 100%;
@@ -66,7 +69,7 @@ export default {
 .edit-btn {
     background-color: #fff;
     border: 2px solid #6ac6f5;
-    color: #6ac6f5;
+    color: #000000;
     padding: 1px 15px;
     border-radius: 4px;
     font-size: 16px;
@@ -76,6 +79,17 @@ export default {
 
 .edit-btn:hover {
     background-color: #6ac6f5;
-    color: #fff;
+    color: #000000;
+}
+
+.post-card {
+    color: white;
+    background: linear-gradient(1turn,#121218,rgba(18,18,24,0));
+    // outline: solid linear-gradient(210deg,rgba(0,255,85,.6),#70f7ff 10%,#76b6fe 60%,#000 80%);
+    box-shadow: 0 0 0 2px rgba(0, 255, 85, .6), 0 0 0 4px #70f7ff, 0 0 0 6px #76b6fe, 0 0 0 8px #000;
+    // margin: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
 }
 </style>
