@@ -12,7 +12,7 @@
         </div>
         <div class="row">
           <div class="col-12" style="position: relative;">
-            <div class="avatar-container" style="position: absolute; top: -2.7rem; left: 1.2rem;">
+            <div class="avatar-container" style="position: absolute; top: -3.5rem; left: 1.2rem;">
               <img class :src="account.picture" :alt="account.name">
 
             </div>

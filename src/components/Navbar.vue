@@ -3,7 +3,7 @@
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center">
         <img alt="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4QKFyd-IGos1gWZtmU4QvOV_bSmFl9HnOG9CFjfZhc2UQpR7MW3edBx5-dfFOdanCIg&usqp=CAU" height="45" />
-        <p class="mx-3 pt-3 fs-4" > Code Social - Connecting you to the coding community</p>
+        <p class="mx-3 pt-3 fs-4" > Code Social - Connecting the coding community</p>
       </div>
     </router-link>
     
@@ -13,7 +13,7 @@
           <form @submit.prevent="searchPosts()">
             <input class="mx-1 input-text" v-model="search" placeholder="Search..." type="text" >
           </form>
-          <p @click="resetPosts()" v-if="searching" class="text-danger mdi mdi-close offset" ><span class="text-black">Go Back</span></p>
+          <p @click="resetPosts()" v-if="searching" class="text-danger mdi mdi-close offset" ></p>
         </div>
         
       </div>

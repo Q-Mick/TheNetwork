@@ -1,8 +1,8 @@
 <template>
   <div v-if="account?.id" class="row">
-    <div class="card-body" style="margin-left: 15px;">
+    <div class="card-body" style="margin-left: 1px;">
 
-      <div class="post-card mx-1 mt-3 elevation-5" style="height: 8.5rem;">
+      <div class="post-card mx-1 my-3 elevation-5">
         <form @submit.prevent="addPost()">
 
           <div class="col-12">
@@ -11,7 +11,7 @@
               <div class="avatar-container">
                 <img class :src="account?.picture" :alt="account?.name">
               </div>
-              <textarea v-model="editable.body" class="m-2 text-area"></textarea>
+              <textarea v-model="editable.body" class="m-2 text-area" ></textarea>
             </div>
           </div>
 
@@ -138,7 +138,7 @@ export default {
   padding: 5px;
   background-color: #121218;
   color: white;
-  // width: 60%;
+  max-width: 60vw;
   font-size: 20px;
 }
 

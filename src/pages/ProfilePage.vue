@@ -1,10 +1,10 @@
 <template>
     <!-- TODO for conditional rendering of edit acct button -->
     <!-- check to see if the id from the route matches the id of the account logged in -->
-    <div class="row" style="margin-left: -1px;">
-        <div class="mt-3 ml-1 card-body mx-1" style="margin-left: 15px;">
+    <div class="row" style="margin-left: -10px;">
+        <div class="mt-3  card-body mx-1" style="margin-left: 15px;">
 
-            <div class="post-card elevation-5" v-if="profile">
+            <div class="post-card elevation-5 mb-1" v-if="profile">
                 <div class="row">
                     <div class="col-12">
                         <div class="banner-container">
@@ -14,11 +14,11 @@
                 </div>
                 <div class="row">
                     <div class="col-12" style="position: relative;">
-                        <div class="avatar-container" style="position: absolute; top: -2.7rem; left: 1.2rem;">
+                        <div class="avatar-container" style="position: absolute; top: -3rem; left: 1.2rem;">
                             <img class :src="profile.picture" :alt="profile.name">
 
                         </div>
-                        <div class="text-end">
+                        <div class="text-end mb-2">
                             <i style="cursor: pointer;" class="mx-1 fs-3 mdi mdi-github" @click="toLink(profile.github)"></i>
                             <i style="cursor: pointer;" class="mx-1 fs-3 mdi mdi-linkedin" @click="toLink(profile.linkedIn)"></i>
                         </div>
@@ -43,7 +43,7 @@
         
     <div class="card-body" style="margin-left: 15px;">
 
-      <div class="post-card mx-1 my-3 elevation-5" style="height: 8.5rem;">
+      <div class="post-card mx-1 my-3 elevation-5" >
         <form @submit.prevent="addPost()">
 
           <div class="col-12">
@@ -258,5 +258,14 @@ export default {
 .input-text:focus {
     border-bottom-color: #555;
 }
-
+.post-card {
+    color: white;
+    background: linear-gradient(1turn,#121218,rgba(18,18,24,0));
+    // outline: solid linear-gradient(210deg,rgba(0,255,85,.6),#70f7ff 10%,#76b6fe 60%,#000 80%);
+    box-shadow: 0 0 0 2px rgba(0, 255, 85, .6), 0 0 0 4px #70f7ff, 0 0 0 6px #76b6fe, 0 0 0 8px #000;
+    // margin: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
 </style>

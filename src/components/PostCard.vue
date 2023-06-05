@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="card-body" style="margin-left: 15px;">
+        <div class="card-body" style="margin-left: 1px;">
             <div class="post-card mx-1 my-3 elevation-5">
                 
                 <div class="col-6">
@@ -100,12 +100,12 @@ p{
     // margin: 0.25rem;
     border-radius: 0.25rem;
     padding: 0.5rem;
-    transition: transform 0.3s ease;
+    // transition: transform 0.3s ease;
 }
 
-.post-card:hover {
-    transform: translateY(-4px);
-}
+// .post-card:hover {
+//     transform: translateY(-4px);
+// }
 
 .banner-container {
     position: relative;
