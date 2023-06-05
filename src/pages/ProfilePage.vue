@@ -1,7 +1,7 @@
 <template>
     <!-- TODO for conditional rendering of edit acct button -->
     <!-- check to see if the id from the route matches the id of the account logged in -->
-    <div class="row" style="margin-left: -10px;">
+    <div class="row" style="margin-left: -10.5px;">
         <div class="mt-3  card-body mx-1" style="margin-left: 15px;">
 
             <div class="post-card elevation-5 mb-1" v-if="profile">
@@ -21,6 +21,7 @@
                         <div class="text-end mb-2">
                             <i style="cursor: pointer;" class="mx-1 fs-3 mdi mdi-github" @click="toLink(profile.github)"></i>
                             <i style="cursor: pointer;" class="mx-1 fs-3 mdi mdi-linkedin" @click="toLink(profile.linkedIn)"></i>
+                            <i style="cursor: pointer;" class="mx-1 fs-3 mdi mdi-file" @click="toLink(account.resume)"></i>
                         </div>
                         <p v-if="profile.graduated" class="m-0 pt-0 mx-1 p-1">{{ profile.class }} alumni</p>
                         <h5 class="pt-0 mx-1 p-1">{{ profile.name }}</h5>
@@ -43,7 +44,7 @@
         
     <div class="card-body" style="margin-left: 15px;">
 
-      <div class="post-card mx-1 my-3 elevation-5" >
+      <div class="post-card my-3 elevation-5" style="margin-right: 6px; margin-left: -6px;">
         <form @submit.prevent="addPost()">
 
           <div class="col-12">

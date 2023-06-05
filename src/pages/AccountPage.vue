@@ -12,20 +12,21 @@
         </div>
         <div class="row">
           <div class="col-12" style="position: relative;">
-            <div class="avatar-container" style="position: absolute; top: -3.5rem; left: 1.2rem;">
+            <div class="avatar-container" style="position: absolute; top: -3.3rem; left: 1.2rem;">
               <img class :src="account.picture" :alt="account.name">
 
             </div>
             <div class="text-end">
               <i style="cursor: pointer;" class="mx-1 fs-3 mdi mdi-github" @click="toLink(account.github)"></i>
               <i style="cursor: pointer;" class="mx-1 fs-3 mdi mdi-linkedin" @click="toLink(account.linkedIn)"></i>
+              <i style="cursor: pointer;" class="mx-1 fs-3 mdi mdi-file" @click="toLink(account.resume)"></i>
             </div>
             <p v-if="account.graduated" class="m-0 pt-0 mx-1 p-1">{{ account.class }} alumni</p>
             <h5 class="pt-0 mx-1 p-1">{{ account.name }}</h5>
             <p class="mb-1 mx-1 p-1">{{ account.bio }}</p>
           </div>
-          <div class="text-end">
-            <button disabled class="edit-btn fs-6">Editing account</button>
+          <div @click="inEdit()" class="text-end">
+            <button class="edit-btn fs-6">Editing account</button>
           </div>
 
         </div>
@@ -41,16 +42,25 @@
 
         <form class="" @submit.prevent="handleSubmit">
           <div v-if="account.id" class="card-body">
-            
+
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Name:</span>
-              <input name="name" class="input-text form-control" placeholder="Name" type="text" required v-model="editable.name">
+              <input name="name" class="input-text form-control" placeholder="Name" type="text" required
+                v-model="editable.name">
             </div>
 
-            
-            <div class="input-group mb-3">
+
+            <div class="input-group mb-0">
               <span class="input-group-text" id="basic-addon1">Class of:</span>
-              <input name="cover-img" class="input-text form-control" placeholder="Graduated class. eg, late spring 2023" type="url" v-model="editable.class">
+              <input name="cover-img" class="input-text form-control" placeholder="Graduated class. eg, late spring 2023"
+                type="text" v-model="editable.class">
+            </div>
+
+            <div class="form-check mb-2">
+              <input class="form-check-input check" type="checkbox" value="" id="flexCheckDefault" v-model="editable.graduated">
+              <label class="form-check-label" for="flexCheckDefault">
+                Graduated
+              </label>
             </div>
 
             <div class="input-group mb-3">
@@ -74,7 +84,8 @@
 
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">GitHub:</span>
-              <input name="cover-img" class="input-text form-control" placeholder="Github URL" type="url" v-model="editable.github">
+              <input name="cover-img" class="input-text form-control" placeholder="Github URL" type="url"
+                v-model="editable.github">
             </div>
 
             <div class="input-group mb-3">
@@ -117,13 +128,13 @@ export default {
     watchEffect(() => {
       editable.value = { ...AppState.account }
     })
-    async function getVerts(){
-        try {
-          await postsService.getVerts()
-        } catch (error) {
-          Pop.error(error)
-        }
+    async function getVerts() {
+      try {
+        await postsService.getVerts()
+      } catch (error) {
+        Pop.error(error)
       }
+    }
 
     return {
       account: computed(() => AppState.account),
@@ -138,13 +149,16 @@ export default {
       },
       toLink(url) {
 
-if (url) {
-    const link = url
-    window.location.href = link;
-} else {
-    Pop.toast("Profile has no link shared")
-}
-},
+        if (url) {
+          const link = url
+          window.location.href = link;
+        } else {
+          Pop.toast("Profile has no link shared")
+        }
+      },
+      inEdit(){
+        Pop.toast("Edit account in the form below")
+      }
     }
   }
 }
@@ -153,7 +167,37 @@ if (url) {
 
 <style lang="scss" scoped>
 
-span{
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border: 2px solid white;
+  outline: none;
+  cursor: pointer;
+}
+
+
+input[type="checkbox"]:checked::before {
+  
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  color: black;
+  outline: none;
+  text-align: center;
+  line-height: 20px;
+}
+
+
+input[type="checkbox"]:checked {
+  background-color: green;
+  border-color: white;
+  outline: none;
+}
+
+
+span {
   color: rgb(235, 235, 235);
   background-color: #121218;
 }
@@ -162,6 +206,7 @@ input::placeholder {
   font-size: 20px;
   color: #999;
 }
+
 .text-area {
   background-color: #121218;
   border: 1px solid #999;
@@ -170,8 +215,9 @@ input::placeholder {
   height: 5rem;
   width: 80%;
   font-size: 20px;
-  color: #999;
+  color: #ffffff;
 }
+
 .text-area:focus {
   border-bottom-color: #555;
   border: none;
@@ -183,7 +229,7 @@ input::placeholder {
   outline: none;
   padding: 5px;
   background-color: #121218;
-  color: #999;
+  color: #ffffff;
   // width: 60%;
   font-size: 20px;
 }
@@ -193,9 +239,10 @@ input::placeholder {
   border: none;
   outline: 1px solid black;
 }
+
 .edit-btn {
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, .5);
-  background: linear-gradient(90deg, #70f7ff, #76b6fe); 
+  background: linear-gradient(90deg, #70f7ff, #76b6fe);
   border: 2px solid #6ac6f5;
   color: black;
   padding: 1px 15px;
@@ -212,15 +259,16 @@ input::placeholder {
 }
 
 .post-card {
-    color: white;
-    background: linear-gradient(1turn,#121218,rgba(18,18,24,0));
-    // outline: solid linear-gradient(210deg,rgba(0,255,85,.6),#70f7ff 10%,#76b6fe 60%,#000 80%);
-    box-shadow: 0 0 0 2px rgba(0, 255, 85, .6), 0 0 0 4px #70f7ff, 0 0 0 6px #76b6fe, 0 0 0 8px #000;
-    // margin: 0.25rem;
-    border-radius: 0.25rem;
-    padding: 0.5rem;
-    transition: transform 0.3s ease;
+  color: white;
+  background: linear-gradient(1turn, #121218, rgba(18, 18, 24, 0));
+  // outline: solid linear-gradient(210deg,rgba(0,255,85,.6),#70f7ff 10%,#76b6fe 60%,#000 80%);
+  box-shadow: 0 0 0 2px rgba(0, 255, 85, .6), 0 0 0 4px #70f7ff, 0 0 0 6px #76b6fe, 0 0 0 8px #000;
+  // margin: 0.25rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
 }
+
 .banner-container {
   position: relative;
   width: 100%;
@@ -247,14 +295,10 @@ input::placeholder {
 
 
 }
+
 .avatar-container img {
   position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-
-
-
-</style>
+}</style>
