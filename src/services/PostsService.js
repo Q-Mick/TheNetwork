@@ -16,8 +16,8 @@ class PostsService {
   async changePage(url) {
     const res = await api.get(url);
     AppState.posts = res.data.posts.map((p) => new Post(p));
-    // AppState.previousPage = res.data.newer;
-    // AppState.nextPage = res.data.older;
+    AppState.previousPage = res.data.newer;
+    AppState.nextPage = res.data.older;
     logger.log(AppState.posts);
   }
   async searchPosts(searchTerm) {

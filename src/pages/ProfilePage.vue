@@ -77,8 +77,8 @@
     <div v-for="(p) in posts" :key="p?.id">
         <PostCard :postProp="p" />
     </div>
-    <button  :disabled="!previousUrl" @click="changePage(previousUrl)" class="edit-btn m-2 fs-5">Previous</button>
-    <button  :disabled="!nextUrl" @click="changePage(nextUrl)" class="edit-btn m-1 fs-5">Next</button>
+    <button v-if="previousUrl != null" @click="changePage(previousUrl)" class="edit-btn m-2 fs-5">Previous</button>
+    <button v-if="nextUrl != null" @click="changePage(nextUrl)" class="edit-btn m-2 fs-5">Next</button>
 </template>
 
 
@@ -268,5 +268,8 @@ export default {
     border-radius: 0.25rem;
     padding: 0.5rem;
     transition: transform 0.3s ease;
+}
+button[disabled] {
+  background-color: #808080;
 }
 </style>

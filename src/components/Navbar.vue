@@ -1,6 +1,6 @@
 <template>
   <nav class="bg-color navbar navbar-expand-lg  px-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+    <router-link @click="resetPosts()" class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center">
         <img alt="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4QKFyd-IGos1gWZtmU4QvOV_bSmFl9HnOG9CFjfZhc2UQpR7MW3edBx5-dfFOdanCIg&usqp=CAU" height="45" />
         <p class="mx-3 pt-3 fs-4" > Code Social</p>
@@ -8,12 +8,11 @@
     </router-link>
     
       <div class="row">
-        <div class="col d-flex pt-1">
+        <div class="col-12 d-flex pt-1">
           <p class="m-0" >Search Posts</p>
           <form @submit.prevent="searchPosts()">
             <input class="mx-1 input-text" v-model="search" placeholder="Search..." type="text" >
           </form>
-          <p @click="resetPosts()" v-if="searching" class="text-danger mdi mdi-close offset" ></p>
         </div>
         
       </div>
@@ -139,7 +138,7 @@ input::placeholder {
   outline: none;
   padding: 5px;
   background-color: #121218;
-  color: #999;
+  color: #ffffff;
  
   font-size: 20px;
 }

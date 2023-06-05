@@ -7,11 +7,11 @@
 
           <div class="col-12">
             <div class="d-flex">
-             
+
               <div class="avatar-container">
                 <img class :src="account?.picture" :alt="account?.name">
               </div>
-              <textarea v-model="editable.body" class="m-2 text-area" ></textarea>
+              <textarea v-model="editable.body" class="m-2 text-area"></textarea>
             </div>
           </div>
 
@@ -19,24 +19,24 @@
             <div class="col-12">
               <div class="text-end">
                 <input v-model="editable.imgUrl" class="input-text" type="text" placeholder="Image Url">
-                <button  type="submit" class="mdi mdi-post edit-btn mx-2">Create Post</button>
+                <button type="submit" class="mdi mdi-post edit-btn mx-2">Create Post</button>
               </div>
-              
+
             </div>
           </div>
         </form>
 
       </div>
     </div>
-    
+
   </div>
 
-  
+
   <div v-for="(p) in posts" :key="p.id">
     <PostCard :postProp="p" />
   </div>
-  <button  :disabled="!previousUrl" @click="changePage(previousUrl)" class="edit-btn m-2 fs-5">Previous</button>
-  <button  :disabled="!nextUrl" @click="changePage(nextUrl)" class="edit-btn m-2 fs-5">Next</button>
+  <button v-if="previousUrl != null" @click="changePage(previousUrl)" class="edit-btn m-2 fs-5">Previous</button>
+  <button v-if="nextUrl != null" @click="changePage(nextUrl)" class="edit-btn m-2 fs-5">Next</button>
 </template>
 
 <script>
@@ -54,7 +54,7 @@ import { Post } from "../models/Post.js";
 export default {
   components: { PostCard, ProfileCard, AddPost },
   setup() {
-    const editable = ref({body: '', imgUrl: ''})
+    const editable = ref({ body: '', imgUrl: '' })
 
 
     onMounted(() => getPosts())
@@ -66,15 +66,15 @@ export default {
       } catch (error) {
         Pop.error(error)
       }
-    
+
     }
-    async function getVerts(){
-        try {
-          await postsService.getVerts()
-        } catch (error) {
-          Pop.error(error)
-        }
+    async function getVerts() {
+      try {
+        await postsService.getVerts()
+      } catch (error) {
+        Pop.error(error)
       }
+    }
     return {
       editable,
       account: computed(() => AppState.account),
@@ -83,12 +83,18 @@ export default {
       nextUrl: computed(() => AppState.nextPage),
       async changePage(url) {
         try {
+
           await postsService.changePage(url)
+          
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
         } catch (error) {
           Pop.error(error)
         }
       },
-      async addPost(){
+      async addPost() {
         let postBody = editable.value.body.trim()
         logger.log(postBody)
         if (postBody.length == 0) {
@@ -111,11 +117,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-  input::placeholder {
+input::placeholder {
   font-size: 20px;
   color: #999;
 }
+
 .text-area {
   background-color: #121218;
   border: 1px solid #999;
@@ -126,6 +132,7 @@ export default {
   font-size: 20px;
   color: white;
 }
+
 .text-area:focus {
   border-bottom-color: #555;
   border: none;
@@ -149,19 +156,19 @@ export default {
 }
 
 .edit-btn {
-    background-color: #fff;
-    border: 2px solid #6ac6f5;
-    color: #000000;
-    padding: 1px 15px;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
+  background-color: #fff;
+  border: 2px solid #6ac6f5;
+  color: #000000;
+  padding: 1px 15px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
 
 }
 
 .edit-btn:hover {
-    background-color: #6ac6f5;
-    color: #000000;
+  background-color: #6ac6f5;
+  color: #000000;
 }
 
 
@@ -183,21 +190,21 @@ export default {
 }
 
 .avatar-container {
-    width: 100px;
-    position: relative;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid #000;
+  width: 100px;
+  position: relative;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #000;
 
 
 }
 
 .avatar-container img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .input-text {
@@ -211,5 +218,7 @@ export default {
 .input-text:focus {
   border-bottom-color: #555;
 }
-
+button[disabled] {
+  background-color: #808080;
+}
 </style>
