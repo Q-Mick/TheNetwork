@@ -3,7 +3,7 @@
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center">
         <img alt="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4QKFyd-IGos1gWZtmU4QvOV_bSmFl9HnOG9CFjfZhc2UQpR7MW3edBx5-dfFOdanCIg&usqp=CAU" height="45" />
-        <p class="mx-3 pt-3 fs-4" > Code Social - Connecting the coding community</p>
+        <p class="mx-3 pt-3 fs-4" > Code Social</p>
       </div>
     </router-link>
     
