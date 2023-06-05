@@ -272,7 +272,7 @@ input::placeholder {
 .banner-container {
   position: relative;
   width: 100%;
-  height: 20rem;
+  height: 12rem;
   /* Adjust the height as needed */
   overflow: hidden;
 }
