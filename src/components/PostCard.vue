@@ -63,8 +63,10 @@ export default {
         return {
             async deletePost(postId) {
                 try {
-                    await Pop.confirm('Are you sure you want to delete the post?')
-                    await postsService.deletePost(postId)
+                    if (await Pop.confirm('Are you sure you want to delete the post?')) {
+                        
+                        await postsService.deletePost(postId)
+                    } 
                 } catch (error) {
                     logger.log(error)
                 }

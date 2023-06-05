@@ -241,24 +241,38 @@ export default {
 
 
 .text-area {
-    border: 1px solid #999;
-    outline: none;
-    padding: 5px;
-    width: 85%;
-    font-size: 14px;
+  background-color: #121218;
+  border: 1px solid #999;
+  outline: none;
+  padding: 5px;
+  height: 5rem;
+  width: 90%;
+  font-size: 20px;
+  color: white;
+}
+
+.text-area:focus {
+  border-bottom-color: #555;
+  border: none;
+  outline: 1px solid black;
 }
 
 .input-text {
-    border: 1px solid #999;
-    outline: none;
-    padding: 5px;
-    width: 60%;
-    font-size: 14px;
+  border: 1px solid #999;
+  outline: none;
+  padding: 5px;
+  background-color: #121218;
+  color: white;
+  max-width: 60vw;
+  font-size: 20px;
 }
 
 .input-text:focus {
-    border-bottom-color: #555;
+  border-bottom-color: #555;
+  border: none;
+  outline: 1px solid black;
 }
+
 .post-card {
     color: white;
     background: linear-gradient(1turn,#121218,rgba(18,18,24,0));
